@@ -43,3 +43,4 @@ plt.show()
 # We can see that a lot of the features are highly correlated, let's get the correlation matrix
 plt.figure(figsize=(16, 12))
 sns.heatmap(df_clean.drop('blueWins', axis=1).corr(), cmap='YlGnBu', annot=True, fmt='.2f', vmin=0)
+#오류남
