@@ -40,3 +40,6 @@ plt.show()
 # 많은 공선성을 보인다.
 # 공선성(collinearity): 하나의 독립변수가 다른 하나의 독립변수로 잘 예측되는 경우, 또는 서로 상관이 높은 경우
 
+# We can see that a lot of the features are highly correlated, let's get the correlation matrix
+plt.figure(figsize=(16, 12))
+sns.heatmap(df_clean.drop('blueWins', axis=1).corr(), cmap='YlGnBu', annot=True, fmt='.2f', vmin=0)
