@@ -54,6 +54,6 @@ df_clean = df_clean.drop(cols, axis=1)
 corr_list = df_clean[df_clean.columns[1:]].apply(lambda x: x.corr(df_clean['blueWins']))
 cols = []
 for col in corr_list.index:
-    if (corr_list[col] > 0.2 or corr_list[col] < -0.2):
+    if corr_list[col] > 0.2 or corr_list[col] < -0.2:
         cols.append(col)
 cols
