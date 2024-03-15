@@ -57,3 +57,6 @@ for col in corr_list.index:
     if corr_list[col] > 0.2 or corr_list[col] < -0.2:
         cols.append(col)
 cols
+
+df_clean = df_clean[cols]
+df_clean.head()
