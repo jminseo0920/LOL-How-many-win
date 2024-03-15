@@ -43,4 +43,17 @@ plt.show()
 # We can see that a lot of the features are highly correlated, let's get the correlation matrix
 plt.figure(figsize=(16, 12))
 sns.heatmap(df_clean.drop('blueWins', axis=1).corr(), cmap='YlGnBu', annot=True, fmt='.2f', vmin=0)
-#오류남
+plt.show()
+
+# Based on the correlation matrix, let's clean the dataset a little bit more to avoid colinearity
+cols = ['blueAvgLevel', 'redWardsPlaced', 'redWardsDestroyed', 'redDeaths', 'redAssists', 'redTowersDestroyed',
+        'redTotalExperience', 'redTotalGold', 'redAvgLevel']
+df_clean = df_clean.drop(cols, axis=1)
+
+# Next let's drop the columns has little correlation with bluewins
+corr_list = df_clean[df_clean.columns[1:]].apply(lambda x: x.corr(df_clean['blueWins']))
+cols = []
+for col in corr_list.index:
+    if (corr_list[col] > 0.2 or corr_list[col] < -0.2):
+        cols.append(col)
+cols
