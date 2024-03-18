@@ -65,3 +65,17 @@ df_clean.head()
 
 df_clean.hist(alpha=0.7, figsize=(12, 10), bins=5)
 plt.show()
+
+# Model Selection
+# train test split scale the set
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+X = df_clean
+y = df['blueWins']
+scaler = MinMaxScaler()
+scaler.fit(X)
+X = scaler.transform(X)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Naive Bayes
