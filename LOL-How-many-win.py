@@ -1,4 +1,6 @@
 # Load packages and dataset
+from typing import List, Any
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -52,7 +54,7 @@ df_clean = df_clean.drop(cols, axis=1)
 
 # Next let's drop the columns has little correlation with bluewins
 corr_list = df_clean[df_clean.columns[1:]].apply(lambda x: x.corr(df_clean['blueWins']))
-cols = []
+cols: list[Any] = []
 for col in corr_list.index:
     if corr_list[col] > 0.2 or corr_list[col] < -0.2:
         cols.append(col)
@@ -60,3 +62,6 @@ cols
 
 df_clean = df_clean[cols]
 df_clean.head()
+
+df_clean.hist(alpha=0.7, figsize=(12, 10), bins=5)
+plt.show()
